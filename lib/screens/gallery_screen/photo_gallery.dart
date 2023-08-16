@@ -14,7 +14,7 @@ class PhotoGallery extends StatefulWidget {
 
 class _PhotoGalleryState extends State<PhotoGallery> {
   int page = 0;
-  final int pageSize = 30;
+  int pageSize = 18;
   late final PhotoManagerBloc photoManagerBloc;
   final ScrollController scrollController = ScrollController();
 
@@ -24,6 +24,7 @@ class _PhotoGalleryState extends State<PhotoGallery> {
         BlocProvider.of<PhotoManagerBloc>(context);
     photoManagerBloc
         .add(FetchPhotos(pageSize: pageSize, page: page, photos: []));
+    pageSize = 38;
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
@@ -43,7 +44,7 @@ class _PhotoGalleryState extends State<PhotoGallery> {
     super.initState();
   }
 
-  final List<QuiltedGridTile> leftTile = const [
+  final List<QuiltedGridTile> rightVerticalTile = const [
     QuiltedGridTile(1, 1),
     QuiltedGridTile(1, 1),
     QuiltedGridTile(2, 1),
@@ -51,13 +52,14 @@ class _PhotoGalleryState extends State<PhotoGallery> {
     QuiltedGridTile(1, 1),
   ];
 
-  final List<QuiltedGridTile> rightTile = const [
+  final List<QuiltedGridTile> leftVerticalTile = const [
     QuiltedGridTile(2, 1),
     QuiltedGridTile(1, 1),
     QuiltedGridTile(1, 1),
     QuiltedGridTile(1, 1),
     QuiltedGridTile(1, 1),
   ];
+
   final List<QuiltedGridTile> bigTile = const [
     QuiltedGridTile(2, 2),
     QuiltedGridTile(1, 1),
@@ -81,29 +83,38 @@ class _PhotoGalleryState extends State<PhotoGallery> {
                   repeatPattern: QuiltedGridRepeatPattern.same,
                   pattern: [
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //================Right Panel===========
-                    ...rightTile,
+                    ...leftVerticalTile,
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //===============Big Tile=============
                     ...bigTile,
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //================Right Panel===========
-                    ...rightTile,
+                    ...leftVerticalTile,
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //================Right Panel===========
-                    ...rightTile,
+                    ...leftVerticalTile,
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //================Right Panel===========
-                    ...rightTile,
+                    ...leftVerticalTile,
                     //==============Left Panel==============
-                    ...leftTile,
+                    ...rightVerticalTile,
                     //===============Big Tile=============
                     ...bigTile,
+                    //==============Left Panel==============
+                    ...rightVerticalTile,
+                    //================Right Panel===========
+                    ...leftVerticalTile,
+                    //==============Left Panel==============
+                    ...rightVerticalTile,
+                    //================Right Panel===========
+                    ...leftVerticalTile,
+                    //==============Left Panel==============
                   ],
                 ),
                 childrenDelegate: SliverChildBuilderDelegate(
