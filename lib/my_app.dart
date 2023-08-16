@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ml_kit/bloc/camera_permission/camera_permission_cubit.dart';
 import 'package:flutter_ml_kit/screens/home_screen/home_screen.dart';
 
 import 'bloc/gallery_permission/gallery_permission_cubit.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<PhotoManagerBloc>(
           create: (context) => PhotoManagerBloc(),
+        ),
+        BlocProvider<CameraPermissionCubit>(
+          create: (context) => CameraPermissionCubit(),
         ),
       ],
       child: MaterialApp(
